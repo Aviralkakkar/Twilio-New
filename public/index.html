@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/salesforce-lightning-design-system.css" />
+    
+ 
+    <script type="text/javascript">
+        (function() {
+            var config = {
+                baseUrl: 'js'
+            };
+
+            var dependencies = [
+                'customActivity'
+            ];
+
+            require(config, dependencies);
+        })();
+    </script>
+    
+    
+    <style type="text/css">
+        body {
+            padding: 20px;
+            margin: 0;
+	    background-color: #ffffff;
+        }
+        .step {
+            display: none;
+        }
+        #step1 {
+            display: block;
+        }
+	html {
+		background: #ffffff;
+	    }
+        
+        
+        
+        .editor
+        {
+			border:solid 1px #ccc;
+			padding: 20px;
+			min-height:200px;
+        }
+
+        .sample-toolbar
+        {
+			border:solid 1px #ddd;
+			background:#f4f4f4;
+			padding: 5px;
+			border-radius:3px;
+        }
+
+        .sample-toolbar > span
+        {
+			cursor:pointer;
+		}
+
+        .sample-toolbar > span:hover
+        {
+			text-decoration:underline;
+		}
+	    
+	  .noselect {  
+		  -webkit-touch-callout: none; /* iOS Safari */   
+		  -webkit-user-select: none; /* Safari */    
+		  -khtml-user-select: none; /* Konqueror HTML */   
+		  -moz-user-select: none; /* Old versions of Firefox */   
+		  -ms-user-select: none; /* Internet Explorer/Edge */ 
+		  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	           }
+	    
+	      
+	    
+	    
+	    
+	    
+/* Modal CSS */	    
+	    
+  .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  margin-left: 569px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+	
+    </style>
+</head>
+
+	
+	
+<body>
+<div id="step1" class="step">
+	<div class="slds-text-heading_small instruction">Enter authentication values for twilio.</div>
+        <br>
+	<!-- enter twilio authentication details-->
+        <div class="form-group">
+            <div><label for="accountSID">Account SID:</label></div>
+            <input class="form-control" id="accountSID" type="text" name="accountSID" value="">
+        </div>
+        <div class="form-group">
+            <div><label for="authToken">Auth Token:</label></div>
+            <input class="form-control" id="authToken" type="text" name="authToken" value="">
+        </div> 
+	
+	
+</div>
+
+
+<div id="step2" class="step">
+  <div class="slds-text-heading_small instruction">Select channels. The user will be sent messages on the channels you are selecting.</div>
+  <br><br>
+
+    
+  <div class="slds-form-element">
+  <div class="slds-form-element__control">
+    <div class="slds-checkbox">
+      <input type="checkbox" name="options" id="SMS" value=""  />
+      <label class="slds-checkbox__label" for="SMS">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-form-element__label">SMS</span>
+      </label>
+    </div>
+    </div>
+    </div>
+ 
+	
+	
+	<div class="slds-form-element">
+        <div class="slds-form-element__control">
+        <div class="slds-checkbox">
+         <input type="checkbox" name="options" id="WhatsApp" value="" onclick="summaryImageDisplay();"/>
+          <label class="slds-checkbox__label" for="WhatsApp">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-form-element__label">WhatsApp</span>
+      </label>
+      </div>
+      </div>
+      </div> 
+	<br>
+	<br>
+	<div class="slds-text-heading_small instruction">Select WhatsApp message type:</div> 
+	<div class="slds-form-element__control">
+		    <div class="slds-select_container">
+		      <select class="slds-select" id="messageType" onchange="MessageTypeChange()">
+			      <option hidden selected>None</option>
+			       <option value="Sessional Message">Sessional Message</option>
+			      <option value="Transactionl Message">Transactional Message</option>
+			      
+			      <!--onfocus="this.selectedIndex = -1;" -->
+		      </select>
+		    </div>
+        </div> 
+	<br>
+	<br>
+	<div class="slds-text-heading_small instruction">Select Template for WhatsApp:</div> 
+	<div class="slds-form-element__control">
+		    <div class="slds-select_container">
+		      <select class="slds-select" id="template" onchange="templateChange()" disabled>
+			      <option hidden selected>None</option>
+			       <option value="Your appointment is coming up on {{1}} at {{2}}">Appointment Reminder</option>
+			      <option value="Your {{1}} order of {{2}} has shipped and should be delivered on {{3}}. Details: {{4}}">Order Confirmation</option>
+			      <option value="Your {{1}} code is {{2}}">Verification Code</option>
+			      <!--onfocus="this.selectedIndex = -1;" -->
+		      </select>
+		    </div>
+        </div> 
+	<br>
+	<br>
+	
+	<div class="slds-text-heading_small instruction">Select recipient</div> 
+	<div class="slds-form-element">
+		  
+		  <div class="slds-form-element__control">
+		    <div class="slds-select_container">
+		      <select class="slds-select" id="recipient" onchange="recipientChange()">
+			      <option hidden selected>None</option>
+			      //onfocus="this.selectedIndex = -1;"
+		      </select>
+		    </div>
+		  </div> 
+	</div>
+	
+</div>
+	
+	
+	
+<div id="step3" class="step" class="step noselect">
+<div class="slds-text-heading_small instruction noselect" id="heading">Create a message:</div>
+
+    <br><br>
+    <div class="sample-toolbar noselect">
+		<a href="javascript:void(0)" onclick="format('bold')"><span class="fa fa-bold fa-fw"></span></a>
+		<a href="javascript:void(0)" onclick="format('italic')"><span class="fa fa-italic fa-fw"></span></a>
+	        <a href="javascript:void(0)" onclick="format('cut')"><span class="fa fa-cut fa-fw"></span></a>
+	        <a href="javascript:void(0)" onclick="format('underline')"><span class="fa fa-underline fa-fw"></span></a>
+	        <a href="javascript:void(0)" onclick="format('strikeThrough')"><span class="fa fa-strikethrough fa-fw"></span></a>
+	    	<a href="javascript:void(0)" onclick="format('undo')"><span class="fa fa-undo fa-fw"></span></a>
+		<a href="javascript:void(0)" onclick="format('redo')"><span class="fa fa-redo fa-fw"></span></a>
+	        <button id="myBtn" ><span class="fa fa-image fa-fw"></span></button>
+	    
+	    
+		<!-- <a href="javascript:void(0)" onclick="format('insertunorderedlist')"><span class="fa fa-list fa-fw"></span></a>
+	   	<a href="javascript:void(0)" onclick="format('justifyLeft')"><span class="fa fa-align-left fa-fw"></span></a>
+		<a href="javascript:void(0)" onclick="format('justifyCenter')"><span class="fa fa-align-center fa-fw"></span></a>
+		<a href="javascript:void(0)" onclick="format('justifyRight')"><span class="fa fa-align-right fa-fw"></span></a>
+	    	<a href="javascript:void(0)" onclick="format('indent')"><span class="fa fa-indent fa-fw"></span></a>
+	        <a href="javascript:void(0)" onclick="format('outdent')"><span class="fa fa-outdent fa-fw"></span></a>
+	        <a href="javascript:void(0)" onclick="format('subscript')"><span class="fa fa-subscript fa-fw"></span></a>
+	        <a href="javascript:void(0)" onclick="format('superscript')"><span class="fa fa-superscript fa-fw"></span></a>	
+		<a href="javascript:void(0)" onclick="format('insertUnorderedList')"><span class="fa fa-list-ul fa-fw"></span></a>
+	        <a href="javascript:void(0)" onclick="format('insertOrderedList')"><span class="fa fa-list-ol fa-fw"></span></a>
+	        <a href="javascript:void(0)" onclick="format('insertParagraph')"><span class="fa fa-paragraph fa-fw"></span></a>
+	        <a href="javascript:void(0)" onclick="format('insertHorizontalRule')" title="insert Horizontal Rule">Horizontal Rule</a> -->
+	    	
+	       
+	      
+	    	
+	       <div class="slds-form-element">
+		  
+		  <div class="slds-form-element__control">
+		    <div class="slds-select_container">
+		      <select class="slds-select" id="ps" onchange="Test()" onfocus="this.selectedIndex = -1;">
+			<option hidden selected>None</option>
+			<!--<option value="{{Contact.Attribute.TwilioV1.EmailAddress}}" id="ps1">Email</option>
+			<option value="{{Contact.Attribute.TwilioV1.TwilioNumber}}" id="ps2">Phone number</option> -->
+			
+		      </select>
+		    </div>
+		  </div>
+		</div>       
+               </div>
+	 <!-- content editable div -->
+         <div id="RichTextEditor" class="editor" contenteditable='true'>
+	 </div>
+	<h3 id="selected">SELECTED IMAGE: </h3>
+<div id="image">
+</div>
+<input type="checkbox" name="options" id="isInserted" value=""  style="display:none;"/>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" style="float:right;">&times;</span>
+    <h2 style="text-align:center;">SELECT THE IMAGE</h2>
+	  <br><br>
+  <div id="showimage">	
+  </div>
+
+	  
+  </div>
+
+</div>
+
+</div>
+</div>
+	<div id="step4" class="step">
+<div class="slds-text-heading_small instruction">CHANNEL</div>
+<div id="channel"> </div> 		
+<br> <br>
+ <div class="slds-text-heading_small instruction">MESSAGE BODY</div> 
+ <div id="Message"></div> 
+	<br> <br>
+<div class="slds-text-heading_small instruction">INSERTED IMAGE:</div> 
+ <div id="imageinserted" class="summaryImage"></div> 
+
+<br> <br>
+<div class="slds-text-heading_small instruction">RECIPIENT:</div> 
+<div id="selectedPhone"></div> 
+
+		
+		<div class="slds-form-element">
+  <div class="slds-form-element__control">
+    <div class="slds-checkbox">
+      <input type="checkbox" name="options" id="smsDEcheckbox" value=""/>
+          <label class="slds-checkbox__label" for="Is SMS tracking DE created">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-form-element__label">SMS</span>
+      </label>
+    </div>
+    </div>
+    </div>
+
+<div class="slds-text-heading_small instruction" >SMS tracking Data Extension:</div> 
+<div id="smsDEname">
+	</div>
+</div>
+</div>
+
+
+<script>
+	
+	// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+		
+		function format(command, value) {
+			document.execCommand(command, false, value);
+		}
+		function execVal(command, value) {
+		       document.execCommand(command, false, value);
+		}
+		function Test() {
+			var value = $("#ps").val();
+			insertTextAtCaret(value);
+			console.log('value------------------->' + value);
+		      
+		}
+		
+		function insertTextAtCaret(text) {
+		    var sel, range;
+		    if (window.getSelection) 
+		    {
+			    sel = window.getSelection();
+			    console.log("selection----------------->" + sel); 
+			    console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
+			    console.log("window.getSelection().anchorNode.id---------------->" + window.getSelection().anchorNode.id);
+			    console.log("window.getSelection().id--------------------------->" + window.getSelection().id);
+			    var parentID = window.getSelection().anchorNode.parentNode.id;
+			    var anchorID = window.getSelection().anchorNode.id;
+			   // if(parentID == 'RichTextEditor' || anchorID == 'RichTextEditor') 
+			    //{
+				    if (sel.getRangeAt && sel.rangeCount) 
+				    {
+					    range = sel.getRangeAt(0);
+					    range.deleteContents();
+					    range.insertNode( document.createTextNode(text) );
+			   	    }
+			  //}
+		    } else if (document.selection && document.selection.createRange) {
+			console.log("I don't know what this is" + document.selection.createRange().text);
+			document.selection.createRange().text = text;
+			console.log("Text-------->" + text);
+		    }
+		}
+	
+	
+	
+function imageinsert(url)
+	{
+		
+		console.log("url as it is received by the insert image function--->" + url);
+	
+		console.log("We are inserting the image now");
+		
+		document.getElementById('image').innerHTML = '<img id= "' + 'insertedSerialNo' + '" style="margin:3px;" src="' + url + '" width="100" height="120"><span class="close" style="float:right;" onclick = "removeimage();">&times;</span></img>';
+		console.log(document.getElementById('image').innerHTML);
+		 document.getElementById("isInserted").checked = true;
+		 modal.style.display = "none";
+		
+		document.getElementById('imageinserted').innerHTML ='<img style="margin:3px;" src="' + url + '" width="100" height="120"></img>';
+
+	}
+	
+function summaryImageDisplay()
+	{
+		var whatsappsms = $("#WhatsApp").is(":checked");  
+		//var url = 'url';
+		var x = document.getElementById('imageinserted');
+		//x.style.display = "block";
+		if(whatsappsms == true)
+                    {
+			    console.log("We are showing the selected image in summary block");
+			x.style.display = "block";
+                        //document.getElementById('imageinserted').innerHTML ='<img style="margin:3px;" src="' + url + '" width="100" height="120"></img>';
+			       
+                    }
+		else{       
+			 console.log("We are hiding the selected image in summary block");
+			x.style.display = "none";
+			//document.getElementById('imageinserted').innerHTML ='';	     
+		}
+	}
+	
+function recipientChange()
+	{
+		console.log("We are selecting the reciepient here.");
+		var value = $("#recipient").val();
+		console.log("Selected phone number" + value);
+		
+		
+	}
+	
+
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() 
+{
+  modal.style.display = "block";
+  console.log(" we are fetching an image here");	
+  document.getElementById("showimage").innerHTML = '';
+          var url = '/imagesContent';  
+	
+
+		
+	  fetch( url, {
+                   method: "POST",
+                   headers: {"Content-Type": "application/json"}
+                      }).then(response => response.json())
+                                    .then((body) => 
+                                          {
+                                                     
+                                                      var map=body.arr;
+                                                      console.log("map------------------>"+map);
+		                                      var arry = map;
+		                                     
+		
+	  
+		arry.forEach(myFunction);
+		  
+		  
+		function myFunction(item, index) {
+		var id = 'serialNo' + index ; 
+		console.log("this is image id------>" + id);
+		document.getElementById("showimage").innerHTML += '<img id="' +  id + '" src="' + item + '" onclick="imageinsert(\'' + item + '\')" width="100" height="120" style="margin:3px;">';
+		}
+		  console.log(document.getElementById("showimage").innerHTML);
+		  
+		 })
+
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() 
+{
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) 
+{
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+function removeimage()
+{
+	console.log("this function will be called to remove the image");
+	document.getElementById('image').innerHTML = ' ';
+	 document.getElementById("isInserted").checked = false;
+	//remove image from summary
+	document.getElementById('imageinserted').innerHTML ='';
+	
+	}
+	
+	
+
+function MessageTypeChange(){
+	console.log("message type is changing here");
+	var value = $("#messageType").val();
+	if(value == "Sessional Message"){
+		$('#template').attr('disabled',true);
+	   }
+	else{
+		$('#template').attr('disabled',false);
+	}
+	
+}
+	function templateChange(){
+	     console.log("Template is selected here");
+		var value = $("#template").val();
+	RichTextEditor
+	document.getElementById('RichTextEditor').innerHTML = value;
+	}
+
+		
+</script>	
+
+	
+	
+
+	
+	
+</body>
+</html>
