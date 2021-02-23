@@ -170,7 +170,7 @@
 	<div class="slds-form-element">
         <div class="slds-form-element__control">
         <div class="slds-checkbox">
-         <input type="checkbox" name="options" id="SMS" value="" onchange="valthis()" onclick="summaryImageDisplay();"/>
+         <input type="checkbox" name="options" id="WhatsApp" value="" onchange="valthis()" onclick="summaryImageDisplay();"/>
           <label class="slds-checkbox__label" for="WhatsApp">
         <span class="slds-checkbox_faux"></span>
         <span class="slds-form-element__label">WhatsApp</span>
@@ -511,21 +511,20 @@ function MessageTypeChange(){
 	}
 
 	function valthis() {
-		var checkBoxes = document.getElementById( 'SMS' );
-		var isChecked = false;
-			for (var i = 0; i < checkBoxes.length; i++) {
-				if ( checkBoxes[i].checked ) {
-					isChecked = true;
-				};
-			};
-			if ( isChecked ) {
-				alert( 'At least one checkbox checked!' );
-				} else {
-					alert( 'Please, check at least one checkbox!' );
-				}   
-		}
-
 		
+			$(document).ready(function () {
+				$('#checkBtn').click(function() {
+				  checked = $("input[type=checkbox]:checked").length;
+			
+				  if(!checked) {
+					alert("You must check at least one checkbox.");
+					return false;
+				  }
+			
+				});
+			});
+
+	}
 </script>	
 
 	
