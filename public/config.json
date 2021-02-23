@@ -29,7 +29,7 @@
         }
     },
     "configurationArguments": {
-        "applicationExtensionKey": "6d35f77b-e998-4c2b-b847-20650744e365",
+        "applicationExtensionKey": "7e2acd6f-11f4-4224-b58c-a17e2cccb67f",
         "save": {
             "url": "https://twilio-sfmc-sakshi.herokuapp.com/journeybuilder/save/",
             "verb": "POST",
