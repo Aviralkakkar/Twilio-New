@@ -252,7 +252,7 @@ define([
             console.log( "Account SID KE ANDAR HA" ); 
           var accountSid = $('#accountSID').val();
               console.log(accountSid);
-              if(accountSid == null)
+              if(!accountSid)
               {
                 alert("AccountSid is empty");
               }
