@@ -247,7 +247,13 @@ define([
     }
     
     function onClickedNext () {
-        if (
+        if((currentStep.key) === 'step1')
+        {
+            console.log( "Account SID KE ANDAR HA" ); 
+        }
+        
+        
+        else if (
             (currentStep.key === 'step3' && steps[3].active === false) ||
             currentStep.key === 'step4'
         ) {
