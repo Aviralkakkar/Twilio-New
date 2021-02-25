@@ -256,10 +256,11 @@ define([
         else if ((currentStep.key) === 'step1')
         {
             var accountSid = $('#accountSID').val();
-            if(accountSid == null)
-            {
-                alert("AccountSid is empty");
-            }
+            console.log(accountSid);
+        //    if(accountSid == null)
+        //    {
+        //        alert("AccountSid is empty");
+        //    }
          //   alert ("Step 1 Next clicked") ;
         }
         else {
