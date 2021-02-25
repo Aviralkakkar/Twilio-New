@@ -255,9 +255,10 @@ define([
               if(!accountSid)
               {
                 console.log($('#accountSIDError').innerHTML);
-                $('#accountSIDError').innerHTML = "Can't be empty";
+            //    $('#accountSIDError').innerHTML = "Can't be empty";
+                document.getElementById("accountSIDError").innerHTML= "Can't be empty";
               }
-         connection.trigger('nextStep');
+        // connection.trigger('nextStep');
           
         }
         
