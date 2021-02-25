@@ -257,7 +257,8 @@ define([
                 console.log($('#accountSIDError').innerHTML);
             //    $('#accountSIDError').innerHTML = "Can't be empty";
                 document.getElementById("accountSIDError").innerHTML= "Please Enter Account SID";
-                $('#step1').show();
+                currentStep.key === 'step1';
+              //  $('#step1').show();
                // connection.trigger('Step1');
               }
               else
