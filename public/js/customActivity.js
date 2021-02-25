@@ -269,9 +269,10 @@ define([
         else if ( currentStep.key === 'step2')
         {
             var WatsappCheck = $("#WhatsApp").is(":checked");  
-            var SmsCheck =  $("#smsDEcheckbox").is(":checked");
-            console.log(WatsappCheck);
-            console.log(SmsCheck);
+            var SmsCheck =  $("#SMS").is(":checked");
+            console.log("sms-----" +SmsCheck);
+            console.log("watsapp------" + WatsappCheck);
+            
         }
         
         else if (
