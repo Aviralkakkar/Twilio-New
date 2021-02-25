@@ -266,6 +266,13 @@ define([
               }
 
         }
+        else if ( currentStep.key === 'step2')
+        {
+            var WatsappCheck = $("#WhatsApp").is(":checked");  
+            var SmsCheck =  $("#smsDEcheckbox").is(":checked");
+            console.log(WatsappCheck);
+            console.log(SmsCheck);
+        }
         
         else if (
             (currentStep.key === 'step3' && steps[3].active === false) ||
