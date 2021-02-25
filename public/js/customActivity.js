@@ -250,9 +250,14 @@ define([
         if((currentStep.key) === 'step1')
         {
             console.log( "Account SID KE ANDAR HA" ); 
-          //  currentStep.key == 'step2';
-          connection.trigger('nextStep');
-          //  showStep("step2");
+          var accountSid = $('#accountSID').val();
+              console.log(accountSid);
+              if(accountSid == null)
+              {
+                alert("AccountSid is empty");
+              }
+         connection.trigger('nextStep');
+          
         }
         
         else if (
