@@ -278,7 +278,7 @@ define([
             {
                 console.log("Checkdiv");
                 document.getElementById("checkboxcheck").innerHTML= checkboxerrorSlds;
-                step = "step2";
+                var step = "step2";
                 showStep(step);
                 connection.trigger('ready');
             }
