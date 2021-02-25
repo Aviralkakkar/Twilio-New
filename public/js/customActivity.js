@@ -251,6 +251,7 @@ define([
         {
             console.log( "Account SID KE ANDAR HA" ); 
             currentStep.key === 'step2';
+            $('#step2').show();
         }
         
         else if (
