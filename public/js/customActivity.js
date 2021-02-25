@@ -250,8 +250,8 @@ define([
         if((currentStep.key) === 'step1')
         {
             console.log( "Account SID KE ANDAR HA" ); 
-            currentStep.key === 'step2';
-            $('#step2').show();
+            currentStep.key == 'step2';
+            onGotoStep(currentStep.key);
         }
         
         else if (
