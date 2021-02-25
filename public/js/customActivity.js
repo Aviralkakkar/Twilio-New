@@ -255,7 +255,12 @@ define([
         }
         else if ((currentStep.key) === 'step1')
         {
-            alert ("Step 1 Next clicked") ;
+            var accountSid = $('#accountSID').val();
+            if(accountSid == null)
+            {
+                alert("AccountSid is empty");
+            }
+         //   alert ("Step 1 Next clicked") ;
         }
         else {
             connection.trigger('nextStep');
