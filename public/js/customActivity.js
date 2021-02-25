@@ -251,7 +251,7 @@ define([
         {
             console.log( "Account SID KE ANDAR HA" ); 
           //  currentStep.key == 'step2';
-            onGotoStep ("step2")
+          connection.trigger('nextStep');
           //  showStep("step2");
         }
         
