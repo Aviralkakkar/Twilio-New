@@ -251,19 +251,20 @@ define([
         {
             console.log( "Account SID KE ANDAR HA" ); 
           var accountSid = $('#accountSID').val();
-              console.log(accountSid);
-              if(!accountSid)
-              {
-                console.log($('#accountSIDError').innerHTML);
-            //    $('#accountSIDError').innerHTML = "Can't be empty";
+          var authToken = $('#authToken').val();
+              
+              if(!accountSid )
+              { 
                 document.getElementById("accountSIDError").innerHTML= "Please Enter Account SID";
-                currentStep.key === 'step1';
-              //  $('#step1').show();
-               // connection.trigger('Step1');
+              }
+              else if (!authToken)
+              {
+                document.getElementById("authTokenError").innerHTML= "Please Enter Auth Token";
               }
               else
               {
                 document.getElementById("accountSIDError").innerHTML= "";
+                document.getElementById("authTokenError").innerHTML= "";
                 connection.trigger('nextStep');
               }
 
