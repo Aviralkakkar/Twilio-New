@@ -252,7 +252,12 @@ define([
             currentStep.key === 'step4'
         ) {
             save();
-        } else {
+        }
+        else if ((currentStep.key) === 'step1')
+        {
+            alert ("Step 1 Next clicked") ;
+        }
+        else {
             connection.trigger('nextStep');
         }
     }
