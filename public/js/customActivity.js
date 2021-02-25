@@ -256,12 +256,12 @@ define([
               if(!accountSid )
               { 
                 document.getElementById("accountSIDError").innerHTML= "Please Enter Account SID";
-                connection.trigger('Step1');
+            //    connection.trigger('Step1');
               }
               else if (!authToken)
               {
                 document.getElementById("authTokenError").innerHTML= "Please Enter Auth Token";
-                return false;
+            //    return false;
               }
               else
               {
@@ -292,6 +292,7 @@ define([
          //   alert ("Step 1 Next clicked") ;
     //    }
         else {
+            console.log("else part me aarha h ");
             connection.trigger('nextStep');
         }
     }
