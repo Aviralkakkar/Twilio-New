@@ -272,18 +272,22 @@ define([
         {
             var WatsappCheck = $("#WhatsApp").is(":checked");  
             var SmsCheck =  $("#SMS").is(":checked");
+            var recipient = $("#recipient").val();
+            console.log("Recipient ---- " + recipient);
             console.log("sms-----" +SmsCheck);
             console.log("watsapp------" + WatsappCheck);
             if(WatsappCheck == false && SmsCheck == false)
             {
-                console.log("Checkdiv");
                 document.getElementById("checkboxcheck").innerHTML= checkboxerrorSlds;
-            //    var step = "step2";
-            //    showStep(step);
                 connection.trigger('ready');
-            //    connection.trigger('updateSteps', [{ key: 'step2', label: 'Step 2', active: true } ]);
             }
-            else
+            else if(!recipient)
+            {
+                document.getElementById("checkboxcheck").innerHTML= "Recipient field is empty";
+                connection.trigger('ready');
+            }
+
+            else 
             {
                 document.getElementById("checkboxcheck").innerHTML= "";
                 connection.trigger('nextStep');
