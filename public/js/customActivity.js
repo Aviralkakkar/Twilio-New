@@ -274,8 +274,9 @@ define([
             var SmsCheck =  $("#SMS").is(":checked");
             console.log("sms-----" +SmsCheck);
             console.log("watsapp------" + WatsappCheck);
-            if(WatsappCheck == false && SmsCheck == false)
+            if(WatsappCheck == "false" && SmsCheck == "false")
             {
+                console.log("Checkdiv");
                 document.getElementById("checkboxcheck").innerHTML= checkboxerrorSlds;
             }
             
