@@ -250,8 +250,8 @@ define([
         if((currentStep.key) === 'step1')
         {
             console.log( "Account SID KE ANDAR HA" ); 
+            currentStep.key === 'step2';
         }
-        
         
         else if (
             (currentStep.key === 'step3' && steps[3].active === false) ||
