@@ -283,12 +283,13 @@ define([
             }
             else if(recipient == "None")
             {
-                document.getElementById("checkboxcheck").innerHTML= "Recipient field is empty";
+                document.getElementById("recipienterror").innerHTML= "Recipient field is empty";
                 connection.trigger('ready');
             }
 
             else 
             {
+                document.getElementById("recipienterror").innerHTML= "";
                 document.getElementById("checkboxcheck").innerHTML= "";
                 connection.trigger('nextStep');
             }
