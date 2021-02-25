@@ -253,9 +253,9 @@ define([
         ) {
             save();
         }
-        else if ((currentStep.key) === 'step1')
-        {
-            console.log( "Account SID KE ANDAR HA" ); 
+    //    else if ((currentStep.key) === 'step1')
+    //    {
+    //        console.log( "Account SID KE ANDAR HA" ); 
         //    var accountSid = $('#accountSID').val();
         //    console.log(accountSid);
         //    if(accountSid == null)
@@ -263,7 +263,7 @@ define([
         //        alert("AccountSid is empty");
         //    }
          //   alert ("Step 1 Next clicked") ;
-        }
+    //    }
         else {
             connection.trigger('nextStep');
         }
