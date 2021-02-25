@@ -255,8 +255,9 @@ define([
         }
         else if ((currentStep.key) === 'step1')
         {
-            var accountSid = $('#accountSID').val();
-            console.log(accountSid);
+            console.log( "Account SID KE ANDAR HA" ); 
+        //    var accountSid = $('#accountSID').val();
+        //    console.log(accountSid);
         //    if(accountSid == null)
         //    {
         //        alert("AccountSid is empty");
