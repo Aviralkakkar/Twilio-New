@@ -58,7 +58,7 @@ define([
         }
        // console.log("Data schema   "+data['schema'].key);
         
-       
+        
          console.log("Key Array----------->" + keyArray);
          console.log("Phone Array----------->" + phoneArray);
         
@@ -247,15 +247,16 @@ define([
     }
     
     function onClickedNext () {
+        var errorSlds = '<div class="slds-notify slds-notify_alert slds-alert_error" role="alert"><span class="slds-assistive-text">error</span><span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed"><svg class="slds-icon slds-icon_x-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use></svg></span><h2>Your browser is currently not supported. Your Salesforce may be degraded. <a href="#">More Information</a></h2><div class="slds-notify__close"><button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"><svg class="slds-button__icon" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use></svg><span class="slds-assistive-text">Close</span></button></div></div>';
         if((currentStep.key) === 'step1')
         {
             console.log( "Account SID KE ANDAR HA" ); 
           var accountSid = $('#accountSID').val();
           var authToken = $('#authToken').val();
               
-              if(!accountSid )
+              if(!accountSid || !authToken )
               { 
-                document.getElementById("accountSIDError").innerHTML= "Please Enter Account SID";
+                document.getElementById("error").innerHTML= errorSlds;
                 connection.trigger('prevStep');
               }
               else if (!authToken)
