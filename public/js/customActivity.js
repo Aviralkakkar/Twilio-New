@@ -280,7 +280,7 @@ define([
                 document.getElementById("checkboxcheck").innerHTML= checkboxerrorSlds;
             //    var step = "step2";
             //    showStep(step);
-                connection.trigger('updateSteps', [{ key: 'step2', label: 'Step 2', active: true } ]);
+                connection.trigger('updateSteps', [{ key: 'step2', label: 'Step 2', active: false } ]);
             }
             else
             {
