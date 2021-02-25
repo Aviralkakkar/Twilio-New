@@ -254,7 +254,7 @@ define([
               console.log(accountSid);
               if(!accountSid)
               {
-                alert("AccountSid is empty");
+                $('#accountSIDError').innerHTML = "Can't be empty";
               }
          connection.trigger('nextStep');
           
