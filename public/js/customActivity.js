@@ -264,9 +264,10 @@ define([
               else
               {
                 document.getElementById("accountSIDError").innerHTML= "";
+                connection.trigger('nextStep');
               }
 
-         connection.trigger('nextStep');
+         
           
         }
         
