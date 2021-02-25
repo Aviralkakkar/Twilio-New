@@ -281,7 +281,7 @@ define([
                 document.getElementById("checkboxcheck").innerHTML= checkboxerrorSlds;
                 connection.trigger('ready');
             }
-            else if(!recipient)
+            else if(recipient == "None")
             {
                 document.getElementById("checkboxcheck").innerHTML= "Recipient field is empty";
                 connection.trigger('ready');
