@@ -256,7 +256,7 @@ define([
               if(!accountSid )
               { 
                 document.getElementById("accountSIDError").innerHTML= "Please Enter Account SID";
-                return false;
+                connection.trigger('prevStep');
 
             //    connection.trigger('Step1');
               }
