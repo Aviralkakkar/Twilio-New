@@ -256,9 +256,10 @@ define([
               {
                 console.log($('#accountSIDError').innerHTML);
             //    $('#accountSIDError').innerHTML = "Can't be empty";
-                document.getElementById("accountSIDError").innerHTML= "Can't be empty";
+                document.getElementById("accountSIDError").innerHTML= "Please Enter Account SID";
+                connection.trigger('Step1');
               }
-        // connection.trigger('nextStep');
+         connection.trigger('nextStep');
           
         }
         
