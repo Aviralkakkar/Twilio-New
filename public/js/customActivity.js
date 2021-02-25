@@ -257,13 +257,11 @@ define([
               { 
                 document.getElementById("accountSIDError").innerHTML= "Please Enter Account SID";
                 connection.trigger('prevStep');
-
-            //    connection.trigger('Step1');
               }
               else if (!authToken)
               {
                 document.getElementById("authTokenError").innerHTML= "Please Enter Auth Token";
-                return false;
+                connection.trigger('prevStep');
               }
               else
               {
