@@ -371,8 +371,10 @@ var span = document.getElementsByClassName("close")[0];
 			console.log ("yeh id hai uss div ki" + document.getElementById("RichTextEditor") );
 		    if (window.getSelection) 
 		    {
+				console.log("Div ke bahar hai");
 				if (document.getElementById("RichTextEditor") )
 				{
+					console.log("Div ke andar hai");
 			    sel = window.getSelection();
 			    console.log("selection----------------->" + sel); 
 			    console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
@@ -390,8 +392,10 @@ var span = document.getElementsByClassName("close")[0];
 			   	    }
 			  }
 		    } else if (document.selection && document.selection.createRange) {
+				console.log("Div ke bahar hai 2");
 				if(document.getElementById("RichTextEditor"))
 				{
+					console.log("Div ke andar hai 2");
 			console.log("I don't know what this is" + document.selection.createRange().text);
 			document.selection.createRange().text = text;
 			console.log("Text-------->" + text);
