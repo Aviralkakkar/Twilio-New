@@ -361,40 +361,18 @@ var span = document.getElementsByClassName("close")[0];
 		}
 		function Test() {
 			var value = $("#ps").val();
-			var rangee = saveSelection();
-			console.log("yeh test me range hai" + rangee);
-			insertTextAtCaret(value , rangee);
+			insertTextAtCaret(value);
 			console.log('value------------------->' + value);
 		      
 		}
 		
-		//var rangee = saveSelection();
-		
-		
-		function saveSelection() {
-			if (window.getSelection) {
-				console.log( "window.getSelection" + window.getSelection);
-				sel = window.getSelection();
-				if (sel.getRangeAt && sel.rangeCount) {
-					console.log("sel.getRangeAt && sel.rangeCount wale me aagya ");
-					console.log(sel.getRangeAt(0));
-					return sel.getRangeAt(0);
-				}
-			} else if (document.selection && document.selection.createRange) {
-				console.log("createrange() me aagya" ) ; 
- 				return document.selection.createRange();
-			}
-			return null;
-		}
-		
-		console.log("RANGE RETURN ----------- > > > > " + rangee);
-		
-		
-		function insertTextAtCaret(text, rangee) {
-			console.log("Range Inside insertTextAtCaret ---> " + rangee);
-		    var sel, range;
+		function insertTextAtCaret(text) {
+			var sel, range;
+			console.log ("yeh id hai uss div ki" + document.getElementById("RichTextEditor") );
 		    if (window.getSelection) 
 		    {
+				if (document.getElementById("RichTextEditor") )
+				{
 			    sel = window.getSelection();
 			    console.log("selection----------------->" + sel); 
 			    console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
@@ -410,11 +388,14 @@ var span = document.getElementsByClassName("close")[0];
 					    range.deleteContents();
 					    range.insertNode( document.createTextNode(text) );
 			   	    }
-			  //}
+			  }
 		    } else if (document.selection && document.selection.createRange) {
+				if(document.getElementById("RichTextEditor"))
+				{
 			console.log("I don't know what this is" + document.selection.createRange().text);
 			document.selection.createRange().text = text;
 			console.log("Text-------->" + text);
+				}
 		    }
 		}
 	
@@ -526,7 +507,7 @@ function removeimage()
 	//remove image from summary
 	document.getElementById('imageinserted').innerHTML ='';
 	
-	}
+}
 	
 	
 
