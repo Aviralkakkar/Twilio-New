@@ -373,12 +373,15 @@ var span = document.getElementsByClassName("close")[0];
 		
 		function saveSelection() {
 			if (window.getSelection) {
+				console.log( "window.getSelection" + window.getSelection);
 				sel = window.getSelection();
 				if (sel.getRangeAt && sel.rangeCount) {
+					console.log("sel.getRangeAt && sel.rangeCount wale me aagya ");
 					return sel.getRangeAt(0);
 				}
 			} else if (document.selection && document.selection.createRange) {
-				return document.selection.createRange();
+				console.log("createrange() me aagya" ) ; 
+ 				return document.selection.createRange();
 			}
 			return null;
 		}
