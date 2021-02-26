@@ -374,7 +374,8 @@ var span = document.getElementsByClassName("close")[0];
 				console.log("Div ke bahar hai");
 				var obj = document.getElementsByClassName("editor");
 				console.log("yeh id hai div ki obj me se   : "  + obj[0].id);
-				if (document.getElementById("RichTextEditor") )
+				var mainDiv = obj[0].id;
+				if ( mainDiv ==  "RichTextEditor")
 				{
 					console.log("Div ke andar hai");
 			    sel = window.getSelection();
@@ -395,7 +396,7 @@ var span = document.getElementsByClassName("close")[0];
 			  }
 		    } else if (document.selection && document.selection.createRange) {
 				console.log("Div ke bahar hai 2");
-				if(document.getElementById("RichTextEditor"))
+				if(mainDiv ==  "RichTextEditor")
 				{
 					console.log("Div ke andar hai 2");
 			console.log("I don't know what this is" + document.selection.createRange().text);
