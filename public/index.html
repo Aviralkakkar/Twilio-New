@@ -366,7 +366,7 @@ var span = document.getElementsByClassName("close")[0];
 		      
 		}
 		
-		var range = function saveSelection() {
+		var rangee = function saveSelection() {
 			if (window.getSelection) {
 				sel = window.getSelection();
 				if (sel.getRangeAt && sel.rangeCount) {
@@ -378,11 +378,11 @@ var span = document.getElementsByClassName("close")[0];
 			return null;
 		}
 		
-		console ("RANGE RETURN ----------- > > > > " + range);
+		console.log("RANGE RETURN ----------- > > > > " + rangee);
 		
 		
-		function insertTextAtCaret(text, range) {
-			console.log("Range Inside insertTextAtCaret ---> " + range);
+		function insertTextAtCaret(text, rangee) {
+			console.log("Range Inside insertTextAtCaret ---> " + rangee);
 		    var sel, range;
 		    if (window.getSelection) 
 		    {
