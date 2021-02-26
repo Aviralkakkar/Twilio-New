@@ -361,12 +361,16 @@ var span = document.getElementsByClassName("close")[0];
 		}
 		function Test() {
 			var value = $("#ps").val();
-			insertTextAtCaret(value);
+			var rangee = saveSelection();
+			insertTextAtCaret(value , rangee);
 			console.log('value------------------->' + value);
 		      
 		}
 		
-		var rangee = function saveSelection() {
+		//var rangee = saveSelection();
+		
+		
+		function saveSelection() {
 			if (window.getSelection) {
 				sel = window.getSelection();
 				if (sel.getRangeAt && sel.rangeCount) {
