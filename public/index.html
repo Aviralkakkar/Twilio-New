@@ -250,7 +250,7 @@
 	        <a href="javascript:void(0)" onclick="format('underline')"><span class="fa fa-underline fa-fw"></span></a>
 	        <a href="javascript:void(0)" onclick="format('strikeThrough')"><span class="fa fa-strikethrough fa-fw"></span></a>
 	    	<a href="javascript:void(0)" onclick="format('undo')"><span class="fa fa-undo fa-fw"></span></a>
-		<a href="javascript:void(0)" onclick="format('redo')"><span class="fa fa-redo fa-fw"></span></a>
+		    <a href="javascript:void(0)" onclick="format('redo')"><span class="fa fa-redo fa-fw"></span></a>
 	        <button id="myBtn" ><span class="fa fa-image fa-fw"></span></button>
 	    
 	    
@@ -366,7 +366,23 @@ var span = document.getElementsByClassName("close")[0];
 		      
 		}
 		
-		function insertTextAtCaret(text) {
+		var range = function saveSelection() {
+			if (window.getSelection) {
+				sel = window.getSelection();
+				if (sel.getRangeAt && sel.rangeCount) {
+					return sel.getRangeAt(0);
+				}
+			} else if (document.selection && document.selection.createRange) {
+				return document.selection.createRange();
+			}
+			return null;
+		}
+		
+		console ("RANGE RETURN ----------- > > > > " + range);
+		
+		
+		function insertTextAtCaret(text, range) {
+			console.log("Range Inside insertTextAtCaret ---> " + range);
 		    var sel, range;
 		    if (window.getSelection) 
 		    {
