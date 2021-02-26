@@ -179,7 +179,7 @@
 	<div class="slds-form-element">
         <div class="slds-form-element__control">
         <div class="slds-checkbox">
-         <input type="checkbox" name="options" id="WhatsApp" value="" onclick="summaryImageDisplay();"/>
+         <input type="checkbox" name="options" id="WhatsApp" value="" onchange="summaryImageDisplay();"/>
           <label class="slds-checkbox__label" for="WhatsApp">
         <span class="slds-checkbox_faux"></span>
         <span class="slds-form-element__label">WhatsApp</span>
@@ -438,9 +438,9 @@ function summaryImageDisplay()
 					//	document.getElementById("WatsappTemplateDiv").style.display = "block";
 					//	document.getElementById("WatsappTemplateDivInfo").style.display = "block";
 						document.getElementById("wholeDiv").style.display = "block";
-						var div1 = document.getElementById('wholeDiv');
+					//	var div1 = document.getElementById('wholeDiv');
 						console.log("watsapp true ke andar aaya");
-						div1.setAttribute("style",  "height: 100px;");
+					//	div1.setAttribute("style",  "height: 100px;");
 						
 	/*					var div = document.getElementById('WatsappOptionDivInfo');
 			div.setAttribute("style",  "height: 20px;");
@@ -466,10 +466,10 @@ function summaryImageDisplay()
 		//	document.getElementById("WatsappTemplateDiv").style.display = "none";
 		//	document.getElementById("WatsappTemplateDivInfo").style.display = "none";
 			document.getElementById("wholeDiv").style.display = "none";
-
+			console.log("It is coming on else part");
 			
-			var div = document.getElementById('wholeDiv');
-			div.setAttribute("style",  "height: 0px;");
+		//	var div = document.getElementById('wholeDiv');
+		//	div.setAttribute("style",  "height: 0px;");
 
 	/*		var div1 = document.getElementById('WatsappOptionDiv');
 			div1.setAttribute("style",  "height: 0px;");
