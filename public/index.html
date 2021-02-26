@@ -375,8 +375,8 @@ var span = document.getElementsByClassName("close")[0];
 				var obj = document.getElementsByClassName("editor");
 				console.log("yeh id hai div ki obj me se   : "  + obj[0].id);
 				var mainDiv = obj[0].id;
-				if ( window.getSelection().anchorNode.parentNode.id ==  "RichTextEditor")
-				{
+			//	if ( window.getSelection().anchorNode.parentNode.id ==  "RichTextEditor")
+			//	{
 					console.log("Div ke andar hai");
 			    sel = window.getSelection();
 			    console.log("selection----------------->" + sel); 
@@ -393,7 +393,7 @@ var span = document.getElementsByClassName("close")[0];
 					    range.deleteContents();
 					    range.insertNode( document.createTextNode(text) );
 			   	    }
-			  }
+			//  }
 		    } else if (document.selection && document.selection.createRange) {
 				console.log("Div ke bahar hai 2");
 				if(window.getSelection().anchorNode.parentNode.id ==  "RichTextEditor")
