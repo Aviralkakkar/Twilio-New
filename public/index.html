@@ -441,11 +441,25 @@ function summaryImageDisplay()
                         //document.getElementById('imageinserted').innerHTML ='<img style="margin:3px;" src="' + url + '" width="100" height="120"></img>';
 			       
                     }
-		else{       
-			document.getElementById("WatsappOptionDivInfo").innerHTML = "";
-			document.getElementById("WatsappOptionDiv").innerHTML = "";
-			document.getElementById("WatsappTemplateDiv").innerHTML = "";
-			document.getElementById("WatsappTemplateDivInfo").innerHTML = "";
+		else
+		{       
+			document.getElementById("WatsappOptionDivInfo").style.display = "none";
+			document.getElementById("WatsappOptionDiv").style.display = "none";
+			document.getElementById("WatsappTemplateDiv").style.display = "none";
+			document.getElementById("WatsappTemplateDivInfo").style.display = "none";
+
+			var div = document.getElementById('WatsappOptionDivInfo');
+			div.setAttribute("style",  "height: 0px;");
+
+			var div1 = document.getElementById('WatsappOptionDiv');
+			div1.setAttribute("style",  "height: 0px;");
+
+			var div2 = document.getElementById('WatsappTemplateDiv');
+			div2.setAttribute("style",  "height: 0px;");
+
+			var div3 = document.getElementById('WatsappTemplateDivInfo');
+			div3.setAttribute("style",  "height: 0px;");
+
 			console.log("We are hiding the selected image in summary block");
 			x.style.display = "none";
 			//document.getElementById('imageinserted').innerHTML ='';	     
