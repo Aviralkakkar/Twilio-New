@@ -372,6 +372,8 @@ var span = document.getElementsByClassName("close")[0];
 		    if (window.getSelection) 
 		    {
 				console.log("Div ke bahar hai");
+				var obj = document.getElementsByClassName("editor");
+				console.log("yeh id hai div ki obj me se   : "  + obj[0].id);
 				if (document.getElementById("RichTextEditor") )
 				{
 					console.log("Div ke andar hai");
@@ -529,7 +531,7 @@ function MessageTypeChange(){
 	function templateChange(){
 	     console.log("Template is selected here");
 		var value = $("#template").val();
-	RichTextEditor
+	
 	document.getElementById('RichTextEditor').innerHTML = value;
 	}
 
