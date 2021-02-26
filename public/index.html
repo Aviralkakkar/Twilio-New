@@ -189,7 +189,7 @@
       </div> 
 	<br>
 	<br>
-<div id = "wholeDiv">
+<div id = "wholeDiv" style="display: none;">
 	<div id = "WatsappOptionDiv" class="slds-text-heading_small instruction">Select WhatsApp message type:</div> 
 	<div id = "WatsappOptionDivInfo" class="slds-form-element__control">
 		    <div class="slds-select_container">
@@ -439,6 +439,7 @@ function summaryImageDisplay()
 					//	document.getElementById("WatsappTemplateDivInfo").style.display = "block";
 						document.getElementById("wholeDiv").style.display = "block";
 						var div1 = document.getElementById('wholeDiv');
+						console.log("watsapp true ke andar aaya");
 						div1.setAttribute("style",  "height: 100px;");
 						
 	/*					var div = document.getElementById('WatsappOptionDivInfo');
