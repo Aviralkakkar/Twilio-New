@@ -377,6 +377,7 @@ var span = document.getElementsByClassName("close")[0];
 				sel = window.getSelection();
 				if (sel.getRangeAt && sel.rangeCount) {
 					console.log("sel.getRangeAt && sel.rangeCount wale me aagya ");
+					console.log(sel.getRangeAt(0));
 					return sel.getRangeAt(0);
 				}
 			} else if (document.selection && document.selection.createRange) {
