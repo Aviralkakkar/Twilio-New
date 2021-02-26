@@ -196,8 +196,7 @@
 			      <option hidden selected>None</option>
 			       <option value="Sessional Message">Sessional Message</option>
 			      <option value="Transactionl Message">Transactional Message</option>
-			      
-			      <!--onfocus="this.selectedIndex = -1;" -->
+
 		      </select>
 		    </div>
         </div> 
@@ -432,6 +431,10 @@ function summaryImageDisplay()
 		//x.style.display = "block";
 		if(whatsappsms == true)
                     {
+						document.getElementById("WatsappOptionDivInfo").style.display = "block";
+						document.getElementById("WatsappOptionDiv").style.display = "block";
+						document.getElementById("WatsappTemplateDiv").style.display = "block";
+						document.getElementById("WatsappTemplateDivInfo").style.display = "block";
 					
 			    console.log("We are showing the selected image in summary block");
 			x.style.display = "block";
@@ -439,8 +442,11 @@ function summaryImageDisplay()
 			       
                     }
 		else{       
-			document.getElementById("WatsappOptionDivInfo").innerHTML = "";
-			 console.log("We are hiding the selected image in summary block");
+			document.getElementById("WatsappOptionDivInfo").style.display = "none";
+			document.getElementById("WatsappOptionDiv").style.display = "none";
+			document.getElementById("WatsappTemplateDiv").style.display = "none";
+			document.getElementById("WatsappTemplateDivInfo").style.display = "none";
+			console.log("We are hiding the selected image in summary block");
 			x.style.display = "none";
 			//document.getElementById('imageinserted').innerHTML ='';	     
 		}
