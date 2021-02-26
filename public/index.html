@@ -189,8 +189,8 @@
       </div> 
 	<br>
 	<br>
-	<div class="slds-text-heading_small instruction">Select WhatsApp message type:</div> 
-	<div class="slds-form-element__control">
+	<div id = "WatsappOptionDiv" class="slds-text-heading_small instruction">Select WhatsApp message type:</div> 
+	<div id = "WatsappOptionDivInfo" class="slds-form-element__control">
 		    <div class="slds-select_container">
 		      <select class="slds-select" id="messageType" onchange="MessageTypeChange()">
 			      <option hidden selected>None</option>
@@ -203,8 +203,8 @@
         </div> 
 	<br>
 	<br>
-	<div class="slds-text-heading_small instruction">Select Template for WhatsApp:</div> 
-	<div class="slds-form-element__control">
+	<div id = "WatsappTemplateDiv" class="slds-text-heading_small instruction">Select Template for WhatsApp:</div> 
+	<div id = "WatsappTemplateDivInfo" class="slds-form-element__control">
 		    <div class="slds-select_container">
 		      <select class="slds-select" id="template" onchange="templateChange()" disabled>
 			      <option hidden selected>None</option>
@@ -270,11 +270,11 @@
 	       
 	      
 	    	
-	       <div class="slds-form-element">
+	        <div class="slds-form-element">
 		  
-		  <div class="slds-form-element__control">
+		    <div class="slds-form-element__control">
 		    <div class="slds-select_container">
-		      <select class="slds-select" id="ps" onchange="Test()" onfocus="this.selectedIndex = -1;">
+		    <select class="slds-select" id="ps" onchange="Test()" onfocus="this.selectedIndex = -1;">
 			<option hidden selected>None</option>
 			<!--<option value="{{Contact.Attribute.TwilioV1.EmailAddress}}" id="ps1">Email</option>
 			<option value="{{Contact.Attribute.TwilioV1.TwilioNumber}}" id="ps2">Phone number</option> -->
@@ -368,8 +368,16 @@ var span = document.getElementsByClassName("close")[0];
 		
 		function insertTextAtCaret(text) {
 			var sel, range;
+			console.log ("yeh id hai uss div ki" + document.getElementById("RichTextEditor") );
 		    if (window.getSelection) 
 		    {
+				console.log("Div ke bahar hai");
+				var obj = document.getElementsByClassName("editor");
+				console.log("yeh id hai div ki obj me se   : "  + obj[0].id);
+				var mainDiv = obj[0].id;
+			//	if ( window.getSelection().anchorNode.parentNode.id ==  "RichTextEditor")
+			//	{
+				console.log("Div ke andar hai");
 			    sel = window.getSelection();
 			    console.log("selection----------------->" + sel); 
 			    console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
@@ -385,12 +393,17 @@ var span = document.getElementsByClassName("close")[0];
 					    range.deleteContents();
 					    range.insertNode( document.createTextNode(text) );
 			   	    }
-			  //}
+			//  }
 		    } else if (document.selection && document.selection.createRange) {
+				console.log("Div ke bahar hai 2");
+			//	if(window.getSelection().anchorNode.parentNode.id ==  "RichTextEditor")
+			//	{
+					console.log("Div ke andar hai 2");
 			console.log("I don't know what this is" + document.selection.createRange().text);
 			document.selection.createRange().text = text;
 			console.log("Text-------->" + text);
-		    }
+				}
+		   // }
 		}
 	
 	
@@ -419,12 +432,14 @@ function summaryImageDisplay()
 		//x.style.display = "block";
 		if(whatsappsms == true)
                     {
+					
 			    console.log("We are showing the selected image in summary block");
 			x.style.display = "block";
                         //document.getElementById('imageinserted').innerHTML ='<img style="margin:3px;" src="' + url + '" width="100" height="120"></img>';
 			       
                     }
 		else{       
+			document.getElementById("WatsappOptionDivInfo").innerHTML = "";
 			 console.log("We are hiding the selected image in summary block");
 			x.style.display = "none";
 			//document.getElementById('imageinserted').innerHTML ='';	     
