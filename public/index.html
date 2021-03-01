@@ -197,7 +197,6 @@
 			      <option hidden selected>None</option>
 			      <option value="Sessional Message">Sessional Message</option>
 			      <option value="Transactionl Message">Transactional Message</option>
-
 		      </select>
 		    </div>
         </div> 
@@ -537,8 +536,10 @@ function MessageTypeChange(){
 	if(value == "Sessional Message"){
 		$('#template').attr('disabled',true);
 	   }
-	else if (value == "Transactional Message"){
+	else{
+		console.log("Transactional message -- . ");
 		$('#template').attr('disabled',false);
+		$('#template').attr("editable", true);
 	}
 	
 }
