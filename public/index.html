@@ -533,13 +533,16 @@ function removeimage()
 function MessageTypeChange(){
 	console.log("message type is changing here");
 	var value = $("#messageType").val();
-	if(value == "Sessional Message"){
-		$('#template').attr('disabled',true);
-	   }
-	else{
+	if(value == "Transactional Message")
+	//if(value == "Sessional Message"){
+		{
 		console.log("Transactional message -- . ");
 		$('#template').attr('disabled',false);
-		$('#template').attr("editable", true);
+	//	$('#template').attr("editable", true);
+	   }
+	else{
+		
+		$('#template').attr('disabled',true);
 	}
 	
 }
