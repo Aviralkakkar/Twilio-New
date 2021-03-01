@@ -206,7 +206,7 @@
 	<div id = "WatsappTemplateDivInfo" class="slds-form-element__control">
 		    <div class="slds-select_container">
 		      <select class="slds-select" id="template" disabled="false" onchange="templateChange()" >
-			      <option hidden selected>None</option>
+			      <option selected>None</option>
 			      <option value="Your appointment is coming up on {{1}} at {{2}}">Appointment Reminder</option>
 			      <option value="Your {{1}} order of {{2}} has shipped and should be delivered on {{3}}. Details: {{4}}">Order Confirmation</option>
 			      <option value="Your {{1}} code is {{2}}">Verification Code</option>
@@ -533,6 +533,7 @@ function removeimage()
 function MessageTypeChange(){
 	console.log("message type is changing here");
 	var value = $("#messageType").val();
+	console.log(value);
 	if(value == "Transactional Message")
 	//if(value == "Sessional Message"){
 		{
