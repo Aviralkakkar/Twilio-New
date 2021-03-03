@@ -543,11 +543,14 @@ function MessageTypeChange(){
 		//	$('#template').attr("editable", true);
 			btn.style.display = 'block' ;
 	   }
-	else
-		{		
+	else if(value=='Transactionl Message')
+		{
+			console.log("Transaction Message Button");
 			$('#template').attr('disabled',false);		
 		//	$("#myBtn").remove();  	
+		console.log("Style ",btn.style.display);
 			btn.style.display =  'none';
+		console.log("after style  ",btn.style.display);
 		//	var buttondiv = document.getElementById("myBtn").innerHTML ;
 		//	buttondiv.remove();
 
