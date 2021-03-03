@@ -73,7 +73,7 @@ exports.edit = function(req, res) {
  * POST Handler for /save/ route of Activity.
  */
 exports.save = function(req, res) {
-
+/*
     console.log("5 -- For Save");
     console.log("4");
     console.log("3");
@@ -81,7 +81,7 @@ exports.save = function(req, res) {
     console.log("1");
     console.log("Save Update");
     // console.log("Saved: "+req.body.inArguments[0]);
-
+*/
     // Data from the req and put it in an array accessible to the main app.
     console.log(req.body);
     logData(req);
@@ -93,7 +93,9 @@ exports.save = function(req, res) {
  */
 exports.execute = function(req, res) {
 
-    console.log("5 -- For Execute");
+    console.log("EXECUTE WALE ME AAGYA HAI");
+
+/*    console.log("5 -- For Execute");
     console.log("4");
     console.log("3");
     console.log("2");
@@ -105,6 +107,7 @@ exports.execute = function(req, res) {
     console.log("Executed: " + req.body.inArguments[0]);
 console.log("RequestBody"+JSON.stringify(req.body));
     console.log("RequestBody"+JSON.stringify(req.body.inArguments));
+*/
     var requestBody = req.body.inArguments[0];
 
     const accountSid = requestBody.accountSid;
@@ -156,7 +159,7 @@ console.log("RequestBody"+JSON.stringify(req.body));
         },
         function(err, responseData){
         if(!err) {
-        console.log(responseData);
+    /*    console.log(responseData);
         console.log(responseData.accountSid); 
         console.log(responseData.apiVersion);
         console.log(responseData.body); 
@@ -167,7 +170,7 @@ console.log("RequestBody"+JSON.stringify(req.body));
         console.log(responseData.direction); 
         console.log(responseData.errorCode); 
         console.log(responseData.errorMessage);
-            
+    */        
             
         var accountSid = responseData.accountSid;
         var apiVersion = responseData.apiVersion;
@@ -245,7 +248,7 @@ console.log("RequestBody"+JSON.stringify(req.body));
     {
         console.log("<---------------------------------------------------This message is sent as SMS-------------------------------------------------->");
     const client = require('twilio')(accountSid, authToken);
-    console.log(to);
+    console.log("YEH TO: HAI ---------> "+ to);
     client.messages
         .create({
             body: smsMessage,
@@ -255,7 +258,7 @@ console.log("RequestBody"+JSON.stringify(req.body));
         },
           function(err, responseData){
         if(!err) {
-        console.log(responseData);
+    /*    console.log(responseData);
         console.log(responseData.accountSid); 
         console.log(responseData.apiVersion);
         console.log(responseData.body); 
@@ -266,7 +269,7 @@ console.log("RequestBody"+JSON.stringify(req.body));
         console.log(responseData.direction); 
         console.log(responseData.errorCode); 
         console.log(responseData.errorMessage);
-            
+    */        
             
         var accountSid = responseData.accountSid;
         var apiVersion = responseData.apiVersion;
@@ -371,12 +374,13 @@ console.log("RequestBody"+JSON.stringify(req.body));
  */
 exports.publish = function(req, res) {
     // console.log('373',customQuantityValues);
-    console.log("5 -- For Publish");
+/*    console.log("5 -- For Publish");
     console.log("4");
     console.log("3");
     console.log("2");
     console.log("1");
     console.log("Publish Update 3");
+*/
      //console.log("Publish: "+req.body.inArguments[0]);
     
    /* var config_file = require('/app/public/config.json');
