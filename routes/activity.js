@@ -73,7 +73,7 @@ exports.edit = function(req, res) {
  * POST Handler for /save/ route of Activity.
  */
 exports.save = function(req, res) {
-/*
+
     console.log("5 -- For Save");
     console.log("4");
     console.log("3");
@@ -81,7 +81,7 @@ exports.save = function(req, res) {
     console.log("1");
     console.log("Save Update");
     // console.log("Saved: "+req.body.inArguments[0]);
-*/
+
     // Data from the req and put it in an array accessible to the main app.
     console.log(req.body);
     logData(req);
@@ -93,9 +93,7 @@ exports.save = function(req, res) {
  */
 exports.execute = function(req, res) {
 
-    console.log("EXECUTE WALE ME AAGYA HAI");
-
-/*    console.log("5 -- For Execute");
+    console.log("5 -- For Execute");
     console.log("4");
     console.log("3");
     console.log("2");
@@ -107,7 +105,6 @@ exports.execute = function(req, res) {
     console.log("Executed: " + req.body.inArguments[0]);
 console.log("RequestBody"+JSON.stringify(req.body));
     console.log("RequestBody"+JSON.stringify(req.body.inArguments));
-*/
     var requestBody = req.body.inArguments[0];
 
     const accountSid = requestBody.accountSid;
@@ -159,7 +156,7 @@ console.log("RequestBody"+JSON.stringify(req.body));
         },
         function(err, responseData){
         if(!err) {
-    /*    console.log(responseData);
+        console.log(responseData);
         console.log(responseData.accountSid); 
         console.log(responseData.apiVersion);
         console.log(responseData.body); 
@@ -170,7 +167,7 @@ console.log("RequestBody"+JSON.stringify(req.body));
         console.log(responseData.direction); 
         console.log(responseData.errorCode); 
         console.log(responseData.errorMessage);
-    */        
+            
             
         var accountSid = responseData.accountSid;
         var apiVersion = responseData.apiVersion;
@@ -248,17 +245,17 @@ console.log("RequestBody"+JSON.stringify(req.body));
     {
         console.log("<---------------------------------------------------This message is sent as SMS-------------------------------------------------->");
     const client = require('twilio')(accountSid, authToken);
-    console.log("YEH TO: HAI ---------> "+ to);
+    console.log("yeh to hai " + to);
     client.messages
         .create({
             body: smsMessage,
             statusCallback: "https://encwq9bqo98l04z.m.pipedream.net/",
             from: '+12018905995',
-            to: '+91' + '8955445796'
+            to: '+91' + to
         },
           function(err, responseData){
         if(!err) {
-    /*    console.log(responseData);
+        console.log(responseData);
         console.log(responseData.accountSid); 
         console.log(responseData.apiVersion);
         console.log(responseData.body); 
@@ -269,7 +266,7 @@ console.log("RequestBody"+JSON.stringify(req.body));
         console.log(responseData.direction); 
         console.log(responseData.errorCode); 
         console.log(responseData.errorMessage);
-    */        
+            
             
         var accountSid = responseData.accountSid;
         var apiVersion = responseData.apiVersion;
@@ -374,26 +371,22 @@ console.log("RequestBody"+JSON.stringify(req.body));
  */
 exports.publish = function(req, res) {
     // console.log('373',customQuantityValues);
-/*    console.log("5 -- For Publish");
+    console.log("5 -- For Publish");
     console.log("4");
     console.log("3");
     console.log("2");
     console.log("1");
     console.log("Publish Update 3");
-*/
      //console.log("Publish: "+req.body.inArguments[0]);
     
    /* var config_file = require('/app/public/config.json');
 console.log(JSON.stringify(config_file));
-
     //var config_file2 = require('/app/public/js/customActivity.js');
     const publicforjson = require(Path.join(__dirname, '..', 'public', 'js','customActivity.js'));
-
 console.log(JSON.stringify(publicforjson));*/
    /* console.log("Request------------->>>><<<<<<<<<<<<---------------" + req + "------------->>>><<<<<<<<<<<<---------------" );
     console.log("" + req.body);
     console.log("" + req.body.inArguments);
-
     
     
     
@@ -407,7 +400,6 @@ console.log(JSON.stringify(publicforjson));*/
    // console.log("RequestBody------------->>>><<<<<<<<<<<<---------------"+JSON.stringify(req.body.inArguments[0]));
    //var requestBody1 = req.body.inArguments[0];
         //console.log("RequestBody"+JSON.stringify(requestBody1));
-
    //const sms =   requestBody1.SMS;
     //const whatsapp = requestBody1.WhatsApp;
     const sms =   true;
@@ -458,7 +450,6 @@ var options = {
     'SoapAction': 'Create'
   },
   body: '<?xml version="1.0" encoding="UTF-8"?>\r\n<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">          \r\n<soapenv:Header>  <fueloauth>' + access_token + '</fueloauth> </soapenv:Header>   \r\n\r\n<soapenv:Body>    \r\n<CreateRequest xmlns="http://exacttarget.com/wsdl/partnerAPI">      \r\n<Options/>\r\n<Objects xsi:type="ns2:DataExtension" xmlns:ns2="http://exacttarget.com/wsdl/partnerAPI">     \r\n      \r\n<CustomerKey>' + EK_name + '</CustomerKey>            \r\n<Name>' + DE_name + '</Name>            \r\n<Description>Stores the SMS tracking data.</Description><IsSendable>true</IsSendable>         \r\n<IsTestable>false</IsTestable>         \r\n\r\n<Fields>\r\n<Field xsi:type="ns2:DataExtensionField">                  \r\n<CustomerKey>Sid</CustomerKey>                   \r\n<Name>Sid</Name>                 \r\n<Label>Sid</Label>                  \r\n <IsRequired>true</IsRequired>                  \r\n <IsPrimaryKey>true</IsPrimaryKey>                   \r\n <FieldType>Text</FieldType>                  \r\n<MaxLength>200</MaxLength>               \r\n</Field>             \r\n\r\n<Field xsi:type="ns2:DataExtensionField">                    <CustomerKey>From</CustomerKey>                \r\n <Name>From</Name>               \r\n<Label>From</Label>                 \r\n <IsRequired>false</IsRequired>                  \r\n <IsPrimaryKey>false</IsPrimaryKey>                   \r\n<FieldType>Text</FieldType>                  \r\n<MaxLength>100</MaxLength>              \r\n</Field>             \r\n\r\n\r\n <Field xsi:type="ns2:DataExtensionField">                   <CustomerKey>Status</CustomerKey>                    <Name>Status</Name>                 \r\n <Label>Status</Label>                   \r\n <IsRequired>false</IsRequired>                   \r\n <IsPrimaryKey>false</IsPrimaryKey>                   \r\n <FieldType>Text</FieldType>                   \r\n <MaxLength>400</MaxLength>                \r\n</Field> \r\n\r\n<Field xsi:type="ns2:DataExtensionField">                   <CustomerKey>To</CustomerKey>                    <Name>to</Name>                 \r\n <Label>to</Label>                   \r\n <IsRequired>false</IsRequired>                   \r\n <IsPrimaryKey>false</IsPrimaryKey>                   \r\n <FieldType>Text</FieldType>                   \r\n <MaxLength>400</MaxLength>                \r\n</Field>  \r\n\r\n<Field xsi:type="ns2:DataExtensionField">                   <CustomerKey>Direction</CustomerKey>                    <Name>Direction</Name>                 \r\n <Label>Direction</Label>                   \r\n <IsRequired>false</IsRequired>                   \r\n <IsPrimaryKey>false</IsPrimaryKey>                   \r\n <FieldType>Text</FieldType>                   \r\n <MaxLength>400</MaxLength>                \r\n</Field> \r\n\r\n<Field xsi:type="ns2:DataExtensionField">                   <CustomerKey>ErrorCode</CustomerKey>                    <Name>ErrorCode</Name>                 \r\n <Label>ErrorCode</Label>                   \r\n <IsRequired>false</IsRequired>                   \r\n <IsPrimaryKey>false</IsPrimaryKey>                   \r\n <FieldType>Text</FieldType>                   \r\n <MaxLength>400</MaxLength>                \r\n</Field> \r\n\r\n<Field xsi:type="ns2:DataExtensionField">                   <CustomerKey>errorMessage</CustomerKey>                    <Name>errorMessage</Name>                 \r\n <Label>errorMessage</Label>                   \r\n <IsRequired>false</IsRequired>                   \r\n <IsPrimaryKey>false</IsPrimaryKey>                   \r\n <FieldType>Text</FieldType>                   \r\n <MaxLength>400</MaxLength>                \r\n</Field> \r\n         \r\n</Fields>\r\n<SendableDataExtensionField>\r\n               \r\n               <Name>Sid</Name>\r\n            </SendableDataExtensionField>\r\n            <SendableSubscriberField>\r\n               <Name>Subscriber Key</Name>\r\n            </SendableSubscriberField>     \r\n</Objects>\r\n</CreateRequest>\r\n</soapenv:Body></soapenv:Envelope>\r\n'
-
 };
 request(options, function (error, response) {
   if (error) throw new Error(error);
@@ -492,7 +483,7 @@ exports.validate = function(req, res) {
     console.log("4");
     console.log("3");
     console.log("2");
-    console.log("1");
+    console.log("1"); 
     //console.log("Validated: "+req.body.inArguments[0]);       
 
     // Data from the req and put it in an array accessible to the main app.

@@ -442,7 +442,8 @@ define([
         var wPmessage = document.getElementById('RichTextEditor').innerHTML;
         var insertedImage ; 
         var entry = "{{Event." + eventDefinitionKey + ".EmailAddress}}";
-        var to = $("#recipient").val();
+    //    var to = $("#recipient").val();
+        var to =  "{{Contact.Attribute.TwilioDE.TwilioNumber}}"
 	var smsDEcheck = $("#smsDEcheckbox").is(":checked");
 	var EK_name2 ; 
 	var wpMessageType  = $("#messageType").val(); 
@@ -528,7 +529,7 @@ define([
             "accountSid": accountSid,
             "authToken": authToken,
             "messagingService": messagingService,
-            "to": to,
+            "to": "+918955445796",
             "SMS": sms,
             "email":"{{Event." + eventDefinitionKey + ".EmailAddress}}",
             "WhatsApp": whatsappsms,
