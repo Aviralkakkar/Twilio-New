@@ -543,7 +543,9 @@ function MessageTypeChange(){
 	else
 		{		
 			$('#template').attr('disabled',false);			
-			document.getElementById("myBtn").innerHTML = "";			
+			var buttondiv = document.getElementById("myBtn").innerHTML ;
+			buttondiv.remove();
+
 		}
 	
 }
