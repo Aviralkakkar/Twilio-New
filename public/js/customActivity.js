@@ -100,12 +100,15 @@ define([
                     console.log("Sessional message -- . ");
                     $('#template').attr('disabled',true);
                 //	$('#template').attr("editable", true);
+                document.getElementById("myBtn").style.display  = 'block' ;
                }
             else
                 {		
                     console.log("Transactional message -- . ");
                     $('#template').attr('disabled',false);
-                //    $("#myBtn").remove();  	
+                //    $("#myBtn").remove();  
+                document.getElementById("myBtn").style.display =  'none';	
+                
                 }
             
             var whatsappsms = $("#WhatsApp").is(":checked");  
