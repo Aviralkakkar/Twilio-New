@@ -105,7 +105,7 @@ define([
                 {		
                     console.log("Transactional message -- . ");
                     $('#template').attr('disabled',false);
-                    $("#myBtn").remove();  	
+                //    $("#myBtn").remove();  	
                 }
             
             var whatsappsms = $("#WhatsApp").is(":checked");  
