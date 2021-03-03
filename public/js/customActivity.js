@@ -79,7 +79,7 @@ define([
            var keyValue = item ;  
          
             var res = keyValue.split(".");
-         document.getElementById('ps').innerHTML +=  '<option value = "{{' + keyValue + '}}">'+ res[2] +'</option>' ; 
+            document.getElementById('ps').innerHTML +=  '<option value = "{{' + keyValue + '}}">'+ res[2] +'</option>' ; 
             var keyValue2 = '{{' + keyValue + '}}';
             phoneArray2.push(keyValue2);
         }
@@ -89,6 +89,29 @@ define([
         {
           document.getElementById("recipient").value = selectedPhone;
         }
+
+        
+            console.log("Message aarha hai customactivity me");
+            var value = $("#messageType").val();
+            console.log("#messageType value   : " + value);
+            //if(value == "Transactional Message")
+            if(value == "Sessional Message")
+                {
+                    console.log("Sessional message -- . ");
+                    $('#template').attr('disabled',true);
+                //	$('#template').attr("editable", true);
+               }
+            else
+                {		
+                    console.log("Transactional message -- . ");
+                    $('#template').attr('disabled',false);
+                }
+            
+        
+
+        
+
+
         
 });
 

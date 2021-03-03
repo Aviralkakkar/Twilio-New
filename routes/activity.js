@@ -103,7 +103,7 @@ exports.execute = function(req, res) {
     console.log("2");
     console.log("1");
     console.log("Executed: " + req.body.inArguments[0]);
-console.log("RequestBody"+JSON.stringify(req.body));
+   console.log("RequestBody"+JSON.stringify(req.body));
     console.log("RequestBody"+JSON.stringify(req.body.inArguments));
     var requestBody = req.body.inArguments[0];
 
