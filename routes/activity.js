@@ -251,7 +251,7 @@ console.log("RequestBody"+JSON.stringify(req.body));
             body: smsMessage,
             statusCallback: "https://encwq9bqo98l04z.m.pipedream.net/",
             from: '+12018905995',
-            to: '+91' + to
+            to: '+91' + '8955445796'
         },
           function(err, responseData){
         if(!err) {

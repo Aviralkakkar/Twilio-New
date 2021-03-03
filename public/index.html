@@ -189,7 +189,7 @@
       </div> 
 	<br>
 	<br>
-<div id = "wholeDiv" >
+<div id = "wholeDiv" style="display: none;">
 	<div id = "WatsappOptionDiv" class="slds-text-heading_small instruction">Select WhatsApp message type:</div> 
 	<div id = "WatsappOptionDivInfo" class="slds-form-element__control">
 		    <div class="slds-select_container">
@@ -538,7 +538,7 @@ function MessageTypeChange(){
 	//if(value == "Sessional Message"){
 		{
 		console.log("Transactional message -- . ");
-	//	$('#template').attr('disabled',false);
+		$('#template').attr('disabled',false);
 	//	$('#template').attr("editable", true);
 	   }
 	else{
