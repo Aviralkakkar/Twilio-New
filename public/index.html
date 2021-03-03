@@ -539,12 +539,14 @@ function MessageTypeChange(){
 			console.log("Transactional message -- . ");
 			$('#template').attr('disabled',true);
 		//	$('#template').attr("editable", true);
+		document.getElementById("myBtn").style.display = 'block' ;
 	   }
 	else
 		{		
 			$('#template').attr('disabled',false);			
-			var buttondiv = document.getElementById("myBtn").innerHTML ;
-			buttondiv.remove();
+			document.getElementById("myBtn").style.display =  'none';
+		//	var buttondiv = document.getElementById("myBtn").innerHTML ;
+		//	buttondiv.remove();
 
 		}
 	
