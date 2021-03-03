@@ -107,8 +107,15 @@ define([
                     $('#template').attr('disabled',false);
                 }
             
-        
-
+            var whatsappsms = $("#WhatsApp").is(":checked");  
+            if(whatsappsms == false)
+            {
+                document.getElementById("wholeDiv").style.display = "none";
+            }
+            else
+            {
+                document.getElementById("wholeDiv").style.display = "block";
+            }
         
 
 
