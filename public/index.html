@@ -542,17 +542,14 @@ function MessageTypeChange(){
 	   }
 	else
 		{		
-			$('#template').attr('disabled',false);
-			
-			document.getElementById("myBtn").style.display = "none";
-			
+			$('#template').attr('disabled',false);			
+			document.getElementById("myBtn").innerHTML = "";			
 		}
 	
 }
 	function templateChange(){
 	    console.log("Template is selected here");
 		var value = $("#template").val();
-
 		document.getElementById('RichTextEditor').innerHTML = value;
 	}
 
