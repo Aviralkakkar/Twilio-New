@@ -303,6 +303,7 @@ cols="50">
 <!-- hidden checkbox to see if the image is inserted or not  -->
 <input type="checkbox" name="options" id="isInserted" value=""  style="display:none;"/>
 
+
 <!-- The Modal to display the images after we click on image button. An api called on server side and returs the URL of images-->
 <div id="myModal" class="modal">
 
@@ -402,7 +403,7 @@ function insertTextAtCaret(text)
 	console.log( ' window.getSelection'  + window.getSelection);
     if (window.getSelection) 
             {
-                sel = window.getSelection();
+                 sel = window.getSelection();
 			//	var conceptName = $('#aioConceptName').find(":selected").val();
 				console.log("selection----------------->" + sel); 
 				console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
@@ -410,7 +411,6 @@ function insertTextAtCaret(text)
 							
                 console.log("window.getSelection().anchorNode.id---------------->" + window.getSelection().anchorNode.id);
                 console.log("window.getSelection().id--------------------------->" + window.getSelection().id);
-				console.log("")
                 var parentID = window.getSelection().anchorNode.parentNode.id;
                 var anchorID = window.getSelection().anchorNode.id;
 				
