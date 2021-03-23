@@ -482,9 +482,9 @@ define([
         var body = $('#messageBody').val();
         var sms = $("#SMS").is(":checked");
         var whatsappsms = $("#WhatsApp").is(":checked");   
-        var messagebody = document.getElementById('RichTextEditor').innerHTML;
-        var smsMessageBody = document.getElementById('RichTextEditor').innerHTML;
-        var wPmessage = document.getElementById('RichTextEditor').innerHTML;
+        var messagebody = $('#RichTextEditor').val();
+        var smsMessageBody = $('#RichTextEditor').val();
+        var wPmessage = $('#RichTextEditor').val();
         var insertedImage ; 
         var entry = "{{Event." + eventDefinitionKey + ".EmailAddress}}";
         var to = $("#recipient").val();
