@@ -414,10 +414,10 @@ function insertTextAtCaret(text)
                 if(parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor' ) 
                 {
 					console.log("Andar wale loop me aagya ");
+					console.log("Andar wale loop me aagya 2");
                     if (sel.getRangeAt && sel.rangeCount) 
                     {
                         range = sel.getRangeAt(0);
-
 						console.log("yeh range ahi --- >  " + range);
                         range.deleteContents();
                         range.insertNode( document.createTextNode(text) );
