@@ -406,8 +406,8 @@ function insertTextAtCaret(text)
                 sel = window.getSelection();
 			//	var conceptName = $('#aioConceptName').find(":selected").val();
 				console.log("selection----------------->" + sel); 
-				console.log("window.getSelection().anchorNode.parentNode.id----->" + sel.anchorNode.parentNode.id);
-				console.log("window.getSelection().anchorNode.parentNode----->" + sel.anchorNode.parentNode.parentNode);
+				console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
+				console.log("window.getSelection().anchorNode.parentNode----->" + window.getSelection().anchorNode.parentNode.parentNode);
 							
                 console.log("window.getSelection().anchorNode.id---------------->" + window.getSelection().anchorNode.id);
                 console.log("window.getSelection().id--------------------------->" + window.getSelection().id);
@@ -425,7 +425,7 @@ function insertTextAtCaret(text)
 
 						console.log("yeh range ahi --- >  " + range);
                         range.deleteContents();
-                        document.createTextNode(text) ;
+                        range.insertNode( document.createTextNode(text) );
                     }
 				}
               
