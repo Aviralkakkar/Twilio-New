@@ -412,6 +412,7 @@ function insertTextAtCaret(text)
 
                 if(parentID == 'RichTextEditor' || anchorID == 'RichTextEditor') 
                 {
+					console.log("Andar wale loop me aagya ");
                     if (sel.getRangeAt && sel.rangeCount) 
                     {
                         range = sel.getRangeAt(0);
