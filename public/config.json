@@ -20,7 +20,7 @@
                 "First name" : ""
             }],
             "outArguments": [],
-            "url": "https://twilio-sfmc-aviral.herokuapp.com/journeybuilder/execute",
+            "url": "https://twilio-sfmc-sakshi.herokuapp.com/journeybuilder/execute",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -29,9 +29,9 @@
         }
     },
     "configurationArguments": {
-        "applicationExtensionKey": "ccafd549-afcd-413e-82f2-4810b55d2ac6",
+        "applicationExtensionKey": "6d35f77b-e998-4c2b-b847-20650744e365",
         "save": {
-            "url": "https://twilio-sfmc-aviral.herokuapp.com/journeybuilder/save/",
+            "url": "https://twilio-sfmc-sakshi.herokuapp.com/journeybuilder/save/",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -39,7 +39,7 @@
             "timeout": 2000
         },
         "publish": {
-            "url": "https://twilio-sfmc-aviral.herokuapp.com/journeybuilder/publish",
+            "url": "https://twilio-sfmc-sakshi.herokuapp.com/journeybuilder/publish",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -47,7 +47,7 @@
             "timeout": 2000
         },
         "validate": {
-            "url": "https://twilio-sfmc-aviral.herokuapp.com/journeybuilder/validate",
+            "url": "https://twilio-sfmc-sakshi.herokuapp.com/journeybuilder/validate",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -55,7 +55,7 @@
             "timeout": 2000
         },
         "stop": {
-            "url": "https://twilio-sfmc-aviral.herokuapp.com/journeybuilder/stop",
+            "url": "https://twilio-sfmc-sakshi.herokuapp.com/journeybuilder/stop",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -164,22 +164,8 @@
                             "direction": "in"
                         }
                     },
-                   
-                   {
-                        "smsDE": {
-                            "dataType": "String",
-                            "isNullable": true,
-                            "direction": "in"
-                        }
-                    },
+                
                     {
-                        "smsDEcheck": {
-                            "dataType": "Boolean",
-                            "isNullable": true,
-                            "direction": "in"
-                        }
-                    },
-                                {
                         "wpMessageType": {
                             "dataType": "String",
                             "isNullable": true,

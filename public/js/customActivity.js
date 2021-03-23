@@ -7,6 +7,7 @@ define([
 
     var connection = new Postmonger.Session();
     var payload = {};
+    var payload1 = {};
     var lastStepEnabled = false;
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Twilio Authentication", "key": "step1" },
@@ -57,7 +58,7 @@ define([
         }
        // console.log("Data schema   "+data['schema'].key);
         
-       
+        
          console.log("Key Array----------->" + keyArray);
          console.log("Phone Array----------->" + phoneArray);
         
@@ -78,7 +79,7 @@ define([
            var keyValue = item ;  
          
             var res = keyValue.split(".");
-         document.getElementById('ps').innerHTML +=  '<option value = "{{' + keyValue + '}}">'+ res[2] +'</option>' ; 
+            document.getElementById('ps').innerHTML +=  '<option value = "{{' + keyValue + '}}">'+ res[2] +'</option>' ; 
             var keyValue2 = '{{' + keyValue + '}}';
             phoneArray2.push(keyValue2);
         }
@@ -88,6 +89,40 @@ define([
         {
           document.getElementById("recipient").value = selectedPhone;
         }
+
+        
+            console.log("Message aarha hai customactivity me");
+            var value = $("#messageType").val();
+            console.log("#messageType value   : " + value);
+            //if(value == "Transactional Message")
+            if(value == "Sessional Message")
+                {
+                    console.log("Sessional message -- . ");
+                    $('#template').attr('disabled',true);
+                //	$('#template').attr("editable", true);
+                document.getElementById("myBtn").style.display  = 'block' ;
+               }
+            else
+                {		
+                    console.log("Transactional message -- . ");
+                    $('#template').attr('disabled',false);
+                //    $("#myBtn").remove();  
+                document.getElementById("myBtn").style.display =  'none';	
+                
+                }
+            
+            var whatsappsms = $("#WhatsApp").is(":checked");  
+            if(whatsappsms == false)
+            {
+                document.getElementById("wholeDiv").style.display = "none";
+            }
+            else
+            {
+                document.getElementById("wholeDiv").style.display = "block";
+            }
+        
+
+
         
 });
 
@@ -246,12 +281,85 @@ define([
     }
     
     function onClickedNext () {
-        if (
-            (currentStep.key === 'step3' && steps[3].active === false) ||
-            currentStep.key === 'step4'
-        ) {
+        var errorSlds = '<div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert"><span class="slds-assistive-text">error</span><span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed"><svg class="slds-icon slds-icon_x-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use></svg></span><h2>Please fill Account SID and Auth Token </h2> <div class="slds-notify__close"><button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"><svg class="slds-button__icon" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use></svg><span class="slds-assistive-text">Close</span></button></div></div>';
+        var checkboxerrorSlds = '<div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert"><span class="slds-assistive-text">error</span><span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed"><svg class="slds-icon slds-icon_x-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use></svg></span><h2>Please select atleast one checkbox</h2> <div class="slds-notify__close"><button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"><svg class="slds-button__icon" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use></svg><span class="slds-assistive-text">Close</span></button></div></div>';
+
+        if((currentStep.key) === 'step1')
+        {
+            
+          var accountSid = $('#accountSID').val();
+          var authToken = $('#authToken').val();
+              
+              if(!accountSid || !authToken )
+              { 
+                document.getElementById("error").innerHTML= errorSlds;
+                connection.trigger('prevStep');
+              }
+              else
+              {
+                document.getElementById("error").innerHTML= "";
+                connection.trigger('nextStep');
+              }
+
+        }
+        else if ( currentStep.key === 'step2')
+        {
+            var WatsappCheck = $("#WhatsApp").is(":checked");  
+            var SmsCheck =  $("#SMS").is(":checked");
+            var recipient = $("#recipient").val();
+            console.log("Recipient ---- " + recipient);
+            console.log("sms-----" +SmsCheck);
+            console.log("watsapp------" + WatsappCheck);
+            if(WatsappCheck == false && SmsCheck == false)
+            {
+                document.getElementById("checkboxcheck").innerHTML= checkboxerrorSlds;
+                connection.trigger('ready');
+            }
+            else if(recipient == "None")
+            {
+                document.getElementById("recipienterror").innerHTML= "Recipient field is empty";
+                connection.trigger('ready');
+            }
+
+            else 
+            {
+                document.getElementById("recipienterror").innerHTML= "";
+                document.getElementById("checkboxcheck").innerHTML= "";
+                connection.trigger('nextStep');
+            }
+            
+        }
+        else if(currentStep.key === 'step3')
+        {
+            var messagebody1 = document.getElementById('RichTextEditor').innerHTML;
+            if(messagebody1 == "")
+            { 
+            document.getElementById("messageBodyNull").innerHTML = "Message body is empty.";
+            connection.trigger('ready');
+            }else
+            {
+                document.getElementById("messageBodyNull").innerHTML= "";
+                connection.trigger('nextStep');
+            }
+
+        }
+        else if ((currentStep.key === 'step3' && steps[3].active === false) || currentStep.key === 'step4') {
             save();
-        } else {
+        }
+
+    //    else if ((currentStep.key) === 'step1')
+    //    {
+    //        console.log( "Account SID KE ANDAR HA" ); 
+        //    var accountSid = $('#accountSID').val();
+        //    console.log(accountSid);
+        //    if(accountSid == null)
+        //    {
+        //        alert("AccountSid is empty");
+        //    }
+         //   alert ("Step 1 Next clicked") ;
+    //    }
+        else {
+            console.log("else part me aarha h ");
             connection.trigger('nextStep');
         }
     }
@@ -304,18 +412,24 @@ define([
                 break;
             case 'step3':
                 $('#step3').show();
-                console.log("---------------------------------------------------------------------------------------------------------------->This is step 3");
+                console.log("------------------------------------------------------------------------------------>This is step 3");
+		
+		
+			
                 var wpsms = $("#WhatsApp").is(":checked"); 
-                if(wpsms != true)
+                var value1 = $("#messageType").val();
+                if(wpsms != true || value1 == "Transactional Message")
                 { 
                     document.getElementById('myBtn').style.display = "none";
                     document.getElementById('selected').style.display = "none";
                     document.getElementById('image').style.display = "none";
+                    document.getElementById('imageinserted').style.display = "none";
                     
                 }else{
                      document.getElementById('myBtn').style.display = "inline";
                     document.getElementById('selected').style.display = "inline";
                     document.getElementById('image').style.display = "block";
+                    document.getElementById('imageinserted').style.display = "block";
                 }
              
                 
@@ -374,13 +488,12 @@ define([
         var insertedImage ; 
         var entry = "{{Event." + eventDefinitionKey + ".EmailAddress}}";
         var to = $("#recipient").val();
-	var smsDEcheck = $("#smsDEcheckbox").is(":checked");
-	var EK_name2 ; 
-	var wpMessageType  = $("#messageType").val(); 
-	var template = $("#template").val();
+        //var to =  "{{Contact.Attribute.TwilioDE.TwilioNumber}}"
+	    var wpMessageType  = $("#messageType").val(); 
+	    var template = $("#template").val();
        
-	console.log(wpMessageType + template);    
-	console.log("selected phone number attribute---->"+ to);
+	    console.log(wpMessageType + template);    
+	    console.log("selected phone number attribute---->"+ to);
         console.log("Entry source--------->" + eventDefinitionKey);
         console.log("Entry source--------->" + entry);
         console.log("Content of division image" + document.getElementById('image').innerHTML);
@@ -397,9 +510,9 @@ define([
         console.log("Messagebody-------------------------------------------------------------------->" + messagebody);
         
         //convert html formatted message body to plain text
-        smsMessageBody = smsMessageBody.replaceAll("&nbsp;", " ");
-         smsMessageBody = smsMessageBody.replaceAll("<br>", " ");
-         smsMessageBody = smsMessageBody.replaceAll("<div>", " ");
+         smsMessageBody = smsMessageBody.replaceAll("&nbsp;", " ");
+         smsMessageBody = smsMessageBody.replaceAll("<br>",'\n');
+         smsMessageBody = smsMessageBody.replaceAll("<div>",'\n');
         var plainText = $('<div>').html(smsMessageBody).text();
         console.log("plain text------------------------->" + plainText);
         smsMessageBody = plainText;
@@ -411,49 +524,19 @@ define([
         wPmessage = wPmessage.replaceAll("<b>", "*");
         wPmessage = wPmessage.replaceAll("</b>", "*");
         wPmessage = wPmessage.replaceAll("&nbsp;", " ");
-        wPmessage = wPmessage.replaceAll("<div>", " ");
-        wPmessage = wPmessage.replaceAll("</div>","");
-        wPmessage = wPmessage.replaceAll("<br>", " ");
         wPmessage = wPmessage.replaceAll("<i>", "_");
         wPmessage = wPmessage.replaceAll("</i>", "_");
         wPmessage = wPmessage.replaceAll("<strike>", "~");
         wPmessage = wPmessage.replaceAll("</strike>", "~");
         wPmessage = wPmessage.replaceAll("<u>", "");
         wPmessage = wPmessage.replaceAll("</u>", "");
+
+        wPmessage = wPmessage.replaceAll("<div>", '\n');
+        wPmessage = wPmessage.replaceAll("</div>",'');
+        wPmessage = wPmessage.replaceAll("<br>",'\n');
         console.log("WhatsApp message------------------->" + wPmessage);
-        
-	    console.log("1");
-            console.log("1");
-	    console.log("1");
-	    console.log("1");
-            console.log("1");
-	    console.log("1");
-	    
-	    
-	   //create de
-	 /*   if(smsDEcheck == false)
-	    {
-		    console.log("The value of checkbox is false and we will create a DE");
-	    var url = '/createDE';  
-	    fetch( url, {
-                   method: "POST",
-                   headers: {"Content-Type": "application/json"}
-                      }).then(response => response.json())
-                                    .then((body) => 
-                                          {
-                                                     
-                                                     // var EK_name1 = body.EK_name;
-                                                     //console.log(EK_name1);
-		    console.log("We have a response here");
-		     //document.getElementById('smsDEname').innerHTML = EK_name1; 
-		   // EK_name2 = EK_name1;
-		                                     
-         })
-		 $("#smsDEcheckbox").attr("checked", true);  
-		  
-	    }*/
-	    
-	    smsDEcheck = $("#smsDEcheckbox").is(":checked");
+      
+	
 	    
         payload['arguments'].execute.inArguments = [{
             "accountSid": accountSid,
@@ -468,18 +551,14 @@ define([
             "WPmessage" : wPmessage,
             "insertedImage": insertedImage,
             "isimage": isimage,
-            //"entrySource" : entry,
-	    "smsDEcheck" : smsDEcheck,
-	    "smsDE" : "SmsTrackingData10-1-2021-13-29-0",
             "wpMessageType" : wpMessageType,
-	    "template" : template 
-         
-           
+	        "template" : template  
         }];
 
         payload['metaData'].isConfigured = true;
 
         console.log("Payload on SAVE function Update--------------------------------------------------->: " + JSON.stringify(payload));
+	    
         connection.trigger('updateActivity', payload);
 
     }
