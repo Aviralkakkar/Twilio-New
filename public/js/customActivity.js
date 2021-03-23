@@ -482,7 +482,7 @@ define([
         var body = $('#messageBody').val();
         var sms = $("#SMS").is(":checked");
         var whatsappsms = $("#WhatsApp").is(":checked");   
-        var messagebody = document.getElementById('RichTextEditorDiv').innerHTML;
+        var messagebody = document.getElementById('RichTextEditor').innerHTML;
         var smsMessageBody = document.getElementById('RichTextEditor').innerHTML;
         var wPmessage = document.getElementById('RichTextEditor').innerHTML;
         var insertedImage ; 
