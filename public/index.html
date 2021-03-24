@@ -17,11 +17,6 @@
 	"sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
 					crossorigin="anonymous"> 
 		  </script> 
-
-	<!-- <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script> -->
-	<!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/jquery.tinymce.min.js" referrerpolicy="origin"></script> -->
-
     
  
     <script type="text/javascript">
@@ -245,7 +240,7 @@
 		    <div class="slds-select_container">
 		      <select class="slds-select" id="recipient" onchange="recipientChange()">
 			      <option hidden selected>None</option>
-			      //onfocus="this.selectedIndex = -1;"
+			     <!-- //onfocus="this.selectedIndex = -1;"-->
 		      </select>
 		    </div>
 		  </div> 
@@ -266,6 +261,7 @@
 
 <!-- Create a message  -->
 <div class="slds-text-heading_small instruction noselect" id="heading">Create a message:</div>
+<p>(Messages with more than 160 characters will be sent as segments. Text messages are charged per segment)</p>
 <br><br>
 
 <!-- Formatting tools  -->
@@ -282,8 +278,8 @@
 		    <div class="slds-form-element__control">
 		    <div class="slds-select_container">
 				
-		    <select class="slds-select" id="ps" onchange="insertTextAtCaret()" >
-			<option value="none" id="none" selected>None</option>
+		    <select class="slds-select" id="ps" onchange="insertAttribute()" >
+			<option hidden selected>None</option>
 			<!--<option value="{{Contact.Attribute.TwilioV1.EmailAddress}}" id="ps1">Email</option>
 			<option value="{{Contact.Attribute.TwilioV1.TwilioNumber}}" id="ps2">Phone number</option> -->
 		    </select>
@@ -293,16 +289,13 @@
     </div>
 
 <!-- content editable div to create a message body  -->
-<!-- <div id="RichTextEditor" class="editor" contenteditable='true' onclick="insertTextAtCaret()"></div>  -->
-
-	<!-- <textarea rows="8" 
-	id="RichTextEditor" 
+<div id="RichTextEditor" class="editor" contenteditable='true'></div>  
+<!-- <textarea rows="4" 
+id="RichTextEditor" 
+cols="50"> 
+</textarea>  <br>-->
 	
-	cols="108"> 
-	</textarea>		  -->
 
-		<div id="RichTextEditor" class="editor" contenteditable="true"></div>
-	
 
 <!--  Display the selected image message  -->
 <h3 id="selected">SELECTED IMAGE: </h3>
@@ -378,46 +371,40 @@ function execVal(command, value)
 	document.execCommand(command, false, value);
 }
 		
-// This function calls another function to insert the attribute string into the content editable div
-//function insertAttribute() 
-//{
+//This function calls another function to insert the attribute string into the content editable div
+function insertAttribute() 
+{
 	
-//	var value = $("#ps").val(); //retrieve the value you want to insert
-//	console.log('value------------------->' + value);
-	//insertTextAtCaret();   //Pass the value to the insert text function	
-//}
+	var value = $("#ps").val(); //retrieve the value you want to insert
+	console.log('value------------------->' + value);
+	insertTextAtCaret(value);   //Pass the value to the insert text function	
+}
 
 //This function os called to insert the attribute value at cursor position
-//function insertTextAtCaret(text)
+function insertTextAtCaret(text)
 
-function insertTextAtCaret()
+//function insertTextAtCaret()
 {
 
-	if($("#ps").val())
-	{
-		var value = $("#ps").val(); 
-	}
+//	if($("#ps").val())
+//	{
+//		var value = $("#ps").val(); 
+//	}
 	
-    var x = document.getElementById("ps").value;
-	if(x!='none')
-  	{
-		console.log("insertTextAtCaret ke andar aagya haii... ")
-		var curPos =  document.getElementById("RichTextEditor").selectionStart; 
-		console.log("cursorPosition ---- > " + curPos); 
-		let x= $('#RichTextEditor').val();
-		console.log("value of x ----> " + x)
-		$('#RichTextEditor').val(x.slice(0,curPos)+value+x.slice(curPos));
+    
+	/*console.log("insertTextAtCaret ke andar aagya haii... ")
+	var curPos =  document.getElementById("RichTextEditor").selectionStart; 
+	console.log("cursorPosition ---- > " + curPos); 
+	let x= $('#RichTextEditor').val();
+	console.log("value of x ----> " + x)
+	$('#RichTextEditor').val(x.slice(0,curPos)+"value"+x.slice(curPos));*/
 
-  	    document.getElementById('none').selected=true;
- 	}
 	
-
-	/*
     var sel, range;
 	console.log( ' window.getSelection'  + window.getSelection);
     if (window.getSelection) 
             {
-                 sel = window.getSelection();
+                sel = window.getSelection();
 			//	var conceptName = $('#aioConceptName').find(":selected").val();
 				console.log("selection----------------->" + sel); 
 				console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
@@ -428,11 +415,11 @@ function insertTextAtCaret()
                 var parentID = window.getSelection().anchorNode.parentNode.id;
                 var anchorID = window.getSelection().anchorNode.id;
 				
-				console.log("yeh hai parent Id" + parentID) ;
-				console.log("yeh hai anchor Id" + anchorID) ;
+				//console.log("yeh hai parent Id" + parentID) ;
+				//console.log("yeh hai anchor Id" + anchorID) ;
 
                 if(parentID == 'RichTextEditor' || anchorID == 'RichTextEditor') 
-                {
+               // {
                     if (sel.getRangeAt && sel.rangeCount) 
                     {
                         range = sel.getRangeAt(0);
@@ -441,7 +428,7 @@ function insertTextAtCaret()
                         range.deleteContents();
                         range.insertNode( document.createTextNode(text) );
                     }
-				}
+				//}
               
 			 } else if (document.selection && document.selection.createRange) 
 			{
@@ -452,7 +439,7 @@ function insertTextAtCaret()
 					console.log("Text-------->" + text);
             	}
         }
-		*/
+		
 }
 
 // function to insert image when selected
