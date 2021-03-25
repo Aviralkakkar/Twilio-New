@@ -414,12 +414,13 @@ function insertTextAtCaret(text)
                 console.log("window.getSelection().id--------------------------->" + window.getSelection().id);
                 var parentID = window.getSelection().anchorNode.parentNode.id;
                 var anchorID = window.getSelection().anchorNode.id;
+				var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id ; 
 				
 				//console.log("yeh hai parent Id" + parentID) ;
 				//console.log("yeh hai anchor Id" + anchorID) ;
 
-                if(parentID == 'RichTextEditor' || anchorID == 'RichTextEditor') 
-               // {
+                if(parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') 
+                {
                     if (sel.getRangeAt && sel.rangeCount) 
                     {
                         range = sel.getRangeAt(0);
@@ -428,7 +429,7 @@ function insertTextAtCaret(text)
                         range.deleteContents();
                         range.insertNode( document.createTextNode(text) );
                     }
-				//}
+				}
               
 			 } else if (document.selection && document.selection.createRange) 
 			{
