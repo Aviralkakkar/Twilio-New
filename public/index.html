@@ -431,6 +431,7 @@ function insertTextAtCaret(text)
 						console.log("yeh range ahi --- >  " + range);
                         range.deleteContents();
                         range.insertNode( document.createTextNode(text) );
+						document.getElementById('none').selected=true;
                     }
 				}
               
@@ -441,9 +442,10 @@ function insertTextAtCaret(text)
 					console.log("I don't know what this is" + document.selection.createRange().text);
 					document.selection.createRange().text = text;
 					console.log("Text-------->" + text);
+					document.getElementById('none').selected=true;
             	}
         }
-		document.getElementById('none').selected=true;
+		
 	}
 		
 }
