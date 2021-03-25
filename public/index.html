@@ -435,7 +435,7 @@ function insertTextAtCaret(text)
                     }
 				}
               
-			 } else if (document.selection && document.selection.createRange) 
+			  else if (document.selection && document.selection.createRange) 
 			{
                 if ( window.getSelection().anchorNode.parentNode.id ==  "RichTextEditor" )
                 {
@@ -445,7 +445,7 @@ function insertTextAtCaret(text)
 					document.getElementById('none').selected=true;
             	}
         }
-		
+	}
 	}
 		
 }
